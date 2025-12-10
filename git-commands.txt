@@ -1,0 +1,74 @@
+# Git Commands Cheat Sheet untuk Project Ini
+
+## Initial Setup (Sekali saja)
+cd "/mnt/c/Users/Admin/OneDrive/Desktop/Kuliah Guwa/SO/UAS/gofood-multithreading"
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+git init
+git add .
+git commit -m "Initial commit: Go-Food Multithreading System"
+git remote add origin https://github.com/[username]/gofood-multithreading.git
+git branch -M main
+git push -u origin main
+
+## Daily Workflow
+
+# Check status
+git status
+
+# Add all changes
+git add .
+
+# Commit with message
+git commit -m "Your descriptive message here"
+
+# Push to GitHub
+git push origin main
+
+## Pull Latest Changes (sebelum mulai coding)
+git pull origin main
+
+## Create Branch (untuk feature baru)
+git checkout -b feature/your-feature-name
+
+## Push Branch
+git push origin feature/your-feature-name
+
+## Switch Branch
+git checkout main
+git checkout feature/your-feature-name
+
+## View History
+git log --oneline
+
+## Undo Changes (before commit)
+git checkout -- filename
+
+## Undo Last Commit (keep changes)
+git reset --soft HEAD~1
+
+## View Remote
+git remote -v
+
+## Clone Repository (untuk team members)
+git clone https://github.com/[username]/gofood-multithreading.git
+
+## Common Commit Messages Examples:
+git commit -m "Add mutex synchronization implementation"
+git commit -m "Fix race condition in payment processor"
+git commit -m "Update README with setup instructions"
+git commit -m "Add screenshots and test results"
+git commit -m "Implement CPU scheduler analysis"
+git commit -m "Add I/O management documentation"
+git commit -m "Create presentation slides"
+git commit -m "Fix typos in documentation"
+
+## Emergency: Force Push (HATI-HATI!)
+git push -f origin main
+
+## Remove File from Git (but keep locally)
+git rm --cached filename
+
+## View Differences
+git diff
+git diff filename
