@@ -9,13 +9,13 @@ Sistem multithreading untuk simulasi pemrosesan order Go-Food yang mendemonstras
 ## 👥 Tim Pengembang
 
 ### Grup A - Fase Coding
-- **[Nama Anda]** - GitHub & Kerangka Kerja System Call (Memory Mapping + Race Condition)
-- **@bryanseann** - Synchronization + Security Protection
-- **@nathanseanlim** - Scheduler + I/O Management
+- **Krisopras Eben Haezer** - GitHub & Kerangka Kerja System Call (Memory Mapping + Race Condition)
+- **Bryan Sean Abner Manullang** - Synchronization + Security Protection
+- **Nathanael Sean Lim** - Scheduler + I/O Management
 
 ### Grup B - Fase Dokumentasi/Presentasi
-- **@cathleenclau** - Latar Belakang, Pendahuluan, Deskripsi Sistem, Flowchart, Pengujian
-- **Antony** - Presentasi + Review Keseluruhan
+- **Cathleen Claudia** - Latar Belakang, Pendahuluan, Deskripsi Sistem, Flowchart, Pengujian
+- **Antony Markus** - Presentasi + Review Keseluruhan
 
 ---
 
