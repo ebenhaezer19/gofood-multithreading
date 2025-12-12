@@ -4,6 +4,8 @@
 
 # Executables
 gofood_system
+gofood_race
+gofood_sync
 *.exe
 *.out
 a.out

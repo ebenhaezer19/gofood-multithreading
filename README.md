@@ -75,27 +75,32 @@ Dalam sistem Go-Food, terdapat beberapa tantangan operasional:
 
 ---
 
-## 🔧 Fitur Implementasi
+## 🔧 Dua Versi Implementasi
 
-### ✅ Race Condition Demonstration
-- Mode `--race`: Menjalankan tanpa synchronization untuk menunjukkan race condition
-- Hasil: Data inconsistency, incorrect counters, wrong revenue calculation
+### 📁 **1. main_race_condition.c** (Race Condition Demo)
+**TANPA Synchronization** - Mendemonstrasikan masalah race condition
+- ❌ Tidak menggunakan mutex/semaphore
+- ❌ Multiple threads akses shared variables tanpa protection
+- ❌ Data inconsistency akan terjadi
+- ✅ Menunjukkan pentingnya synchronization
 
-### ✅ Synchronization
-- **Mutex**: Melindungi critical sections
-- **Semaphores**: Mengatur sequential dependency antar thread
-- **Condition Variables**: Thread coordination
-- Mode `--sync`: Menjalankan dengan proper synchronization
+**Race Condition Points:**
+- `completed` counter (increment tanpa lock)
+- `total_revenue` (update tanpa lock)
+- `stock` (decrement tanpa lock)
+- `order_queue` (enqueue/dequeue tanpa lock)
 
-### ✅ Memory Mapping
-- Menggunakan `mmap()` untuk shared memory allocation
-- Visualisasi memory layout
-- Analisis memory access patterns per thread
+### 📁 **2. main_synchronized.c** (Synchronized Version)
+**DENGAN Synchronization** - Implementasi yang benar
+- ✅ Menggunakan mutex untuk protect shared resources
+- ✅ Menggunakan condition variables untuk thread coordination
+- ✅ Sequential dependency terjaga
+- ✅ Data consistency terjamin
 
-### ✅ Scheduler
-- Demonstrasi CPU scheduling untuk thread execution
-- Analisis context switching
-- Performance comparison
+**Synchronization Mechanisms:**
+- **Mutex**: `mutex_queue`, `mutex_stock`, `mutex_payment`
+- **Condition Variables**: `cond_payment`, `cond_done`
+- **Sequential Flow**: Payment → Kitchen → Stock Update
 
 ---
 
@@ -115,33 +120,56 @@ make --version
 ### Build Project
 ```bash
 # Clone repository
-git clone <repository-url>
+git clone https://github.com/ebenhaezer19/gofood-multithreading.git
 cd gofood-multithreading
 
-# Build
+# Build both versions
 make
+```
+
+Output:
+```
+==========================================
+Build successful!
+  - gofood_race (Race Condition Demo)
+  - gofood_sync (Synchronized Version)
+==========================================
 ```
 
 ### Run Program
 
-#### 1. Demonstrasi Race Condition (Tanpa Synchronization)
+#### 1. Race Condition Demo (TANPA Synchronization)
 ```bash
 make run-race
 # atau
-./gofood_system
+./gofood_race
 ```
 
-#### 2. Mode Synchronized (Dengan Synchronization)
+**Expected Output:**
+- ⚠️ Data inconsistency
+- ⚠️ Order count mungkin tidak tepat 30
+- ⚠️ Stock calculation salah
+- ⚠️ Revenue tidak akurat
+
+#### 2. Synchronized Version (DENGAN Synchronization)
 ```bash
 make run-sync
 # atau
-./gofood_system --sync
+./gofood_sync
 ```
+
+**Expected Output:**
+- ✅ Data consistency
+- ✅ Order count = 30 (correct)
+- ✅ Stock calculation correct
+- ✅ Revenue accurate
 
 #### 3. Jalankan Kedua Mode untuk Perbandingan
 ```bash
 make run-both
 ```
+
+Akan menjalankan kedua versi secara berurutan untuk perbandingan langsung.
 
 ### Clean Build
 ```bash
