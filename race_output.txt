@@ -1,0 +1,212 @@
+========================================
+   GO-FOOD RACE CONDITION DEMO
+   (TANPA SYNCHRONIZATION)
+========================================
+
+⚠️  WARNING: Program ini TIDAK menggunakan mutex/semaphore
+⚠️  Race condition AKAN terjadi!
+⚠️  Data mungkin TIDAK konsisten!
+
+--- Generating Orders ---
+[OrderReceiver] Order 0 masuk ke queue (rear=1)
+[OrderReceiver] Order 1 masuk ke queue (rear=2)
+[OrderReceiver] Order 2 masuk ke queue (rear=3)
+[OrderReceiver] Order 3 masuk ke queue (rear=4)
+[OrderReceiver] Order 4 masuk ke queue (rear=5)
+[OrderReceiver] Order 5 masuk ke queue (rear=6)
+[OrderReceiver] Order 6 masuk ke queue (rear=7)
+[OrderReceiver] Order 7 masuk ke queue (rear=8)
+[OrderReceiver] Order 8 masuk ke queue (rear=9)
+[OrderReceiver] Order 9 masuk ke queue (rear=10)
+[OrderReceiver] Order 10 masuk ke queue (rear=11)
+[OrderReceiver] Order 11 masuk ke queue (rear=12)
+[OrderReceiver] Order 12 masuk ke queue (rear=13)
+[OrderReceiver] Order 13 masuk ke queue (rear=14)
+[OrderReceiver] Order 14 masuk ke queue (rear=15)
+[OrderReceiver] Order 15 masuk ke queue (rear=16)
+[OrderReceiver] Order 16 masuk ke queue (rear=17)
+[OrderReceiver] Order 17 masuk ke queue (rear=18)
+[OrderReceiver] Order 18 masuk ke queue (rear=19)
+[OrderReceiver] Order 19 masuk ke queue (rear=20)
+[OrderReceiver] Order 20 masuk ke queue (rear=21)
+[OrderReceiver] Order 21 masuk ke queue (rear=22)
+[OrderReceiver] Order 22 masuk ke queue (rear=23)
+[OrderReceiver] Order 23 masuk ke queue (rear=24)
+[OrderReceiver] Order 24 masuk ke queue (rear=25)
+[OrderReceiver] Order 25 masuk ke queue (rear=26)
+[OrderReceiver] Order 26 masuk ke queue (rear=27)
+[OrderReceiver] Order 27 masuk ke queue (rear=28)
+[OrderReceiver] Order 28 masuk ke queue (rear=29)
+[OrderReceiver] Order 29 masuk ke queue (rear=30)
+
+--- Starting Threads ---
+[Payment Thread] Started
+[Payment] Order 0 dibayar (Rp 49719) - Total Revenue: Rp 49719
+[Kitchen 1] Started
+[Kitchen 1] Masak order 0
+[Kitchen 2] Started
+[Kitchen 2] WARNING: Order 1 belum dibayar tapi diproses!
+[Kitchen 2] Masak order 1
+[Kitchen 3] Started
+[Kitchen 3] WARNING: Order 2 belum dibayar tapi diproses!
+[Kitchen 3] Masak order 2
+[Kitchen 4] Started
+[Kitchen 4] WARNING: Order 3 belum dibayar tapi diproses!
+[Kitchen 4] Masak order 3
+[Kitchen 5] Started
+[Kitchen 5] WARNING: Order 4 belum dibayar tapi diproses!
+[Kitchen 5] Masak order 4
+
+--- Processing Orders ---
+
+[Stock Manager] Started
+[Print Thread] Started
+[Payment] Order 1 dibayar (Rp 40187) - Total Revenue: Rp 89906
+[Payment] Order 2 dibayar (Rp 48164) - Total Revenue: Rp 138070
+[Payment] Order 3 dibayar (Rp 43141) - Total Revenue: Rp 181211
+[Kitchen 3] Order 2 selesai - Stock: 99
+[Kitchen 3] WARNING: Order 5 belum dibayar tapi diproses!
+[Kitchen 3] Masak order 5
+[Payment] Order 4 dibayar (Rp 47306) - Total Revenue: Rp 228517
+[Kitchen 5] Order 4 selesai - Stock: 98
+[Kitchen 5] WARNING: Order 6 belum dibayar tapi diproses!
+[Kitchen 5] Masak order 6
+[Kitchen 2] Order 1 selesai - Stock: 97
+[Kitchen 2] WARNING: Order 7 belum dibayar tapi diproses!
+[Kitchen 2] Masak order 7
+[Kitchen 4] Order 3 selesai - Stock: 96
+[Kitchen 4] WARNING: Order 8 belum dibayar tapi diproses!
+[Kitchen 4] Masak order 8
+[Payment] Order 5 dibayar (Rp 30261) - Total Revenue: Rp 258778
+[Print] Cetak struk untuk order yang selesai... (total=4)
+[Kitchen 1] Order 0 selesai - Stock: 95
+[Kitchen 1] WARNING: Order 9 belum dibayar tapi diproses!
+[Kitchen 1] Masak order 9
+[Payment] Order 6 dibayar (Rp 40763) - Total Revenue: Rp 299541
+[Kitchen 3] Order 5 selesai - Stock: 94
+[Kitchen 3] WARNING: Order 10 belum dibayar tapi diproses!
+[Kitchen 3] Masak order 10
+[Stock Manager] Update stok... (current=94, completed=6)
+[Payment] Order 7 dibayar (Rp 36207) - Total Revenue: Rp 335748
+[Payment] Order 8 dibayar (Rp 28496) - Total Revenue: Rp 364244
+[Kitchen 1] Order 9 selesai - Stock: 93
+[Kitchen 1] WARNING: Order 11 belum dibayar tapi diproses!
+[Kitchen 1] Masak order 11
+[Kitchen 5] Order 6 selesai - Stock: 92
+[Kitchen 5] WARNING: Order 12 belum dibayar tapi diproses!
+[Kitchen 5] Masak order 12
+[Kitchen 2] Order 7 selesai - Stock: 91
+[Kitchen 2] WARNING: Order 13 belum dibayar tapi diproses!
+[Kitchen 2] Masak order 13
+[Payment] Order 9 dibayar (Rp 44833) - Total Revenue: Rp 409077
+[Print] Cetak struk untuk order yang selesai... (total=9)
+[Payment] Order 10 dibayar (Rp 33509) - Total Revenue: Rp 442586
+[Payment] Order 11 dibayar (Rp 32371) - Total Revenue: Rp 474957
+[Kitchen 4] Order 8 selesai - Stock: 90
+[Kitchen 4] WARNING: Order 14 belum dibayar tapi diproses!
+[Kitchen 4] Masak order 14
+[Payment] Order 12 dibayar (Rp 41098) - Total Revenue: Rp 516055
+[Kitchen 3] Order 10 selesai - Stock: 89
+[Kitchen 3] WARNING: Order 15 belum dibayar tapi diproses!
+[Kitchen 3] Masak order 15
+[Kitchen 2] Order 13 selesai - Stock: 88
+[Kitchen 2] WARNING: Order 16 belum dibayar tapi diproses!
+[Kitchen 2] Masak order 16
+[Stock Manager] Update stok... (current=88, completed=12)
+[Payment] Order 13 dibayar (Rp 41401) - Total Revenue: Rp 557456
+[Payment] Order 14 dibayar (Rp 32972) - Total Revenue: Rp 590428
+[Kitchen 1] Order 11 selesai - Stock: 87
+[Kitchen 1] WARNING: Order 17 belum dibayar tapi diproses!
+[Kitchen 1] Masak order 17
+[Payment] Order 15 dibayar (Rp 39312) - Total Revenue: Rp 629740
+[Kitchen 5] Order 12 selesai - Stock: 86
+[Kitchen 5] WARNING: Order 18 belum dibayar tapi diproses!
+[Kitchen 5] Masak order 18
+[Payment] Order 16 dibayar (Rp 26441) - Total Revenue: Rp 656181
+[Print] Cetak struk untuk order yang selesai... (total=14)
+[Kitchen 4] Order 14 selesai - Stock: 85
+[Kitchen 4] WARNING: Order 19 belum dibayar tapi diproses!
+[Kitchen 4] Masak order 19
+[Payment] Order 17 dibayar (Rp 33808) - Total Revenue: Rp 689989
+[Kitchen 3] Order 15 selesai - Stock: 84
+[Kitchen 3] WARNING: Order 20 belum dibayar tapi diproses!
+[Kitchen 3] Masak order 20
+[Payment] Order 18 dibayar (Rp 46075) - Total Revenue: Rp 736064
+[Payment] Order 19 dibayar (Rp 32695) - Total Revenue: Rp 768759
+[Kitchen 4] Order 19 selesai - Stock: 83
+[Kitchen 4] WARNING: Order 21 belum dibayar tapi diproses!
+[Kitchen 4] Masak order 21
+[Payment] Order 20 dibayar (Rp 39129) - Total Revenue: Rp 807888
+[Stock Manager] Update stok... (current=83, completed=17)
+[Kitchen 1] Order 17 selesai - Stock: 82
+[Kitchen 1] WARNING: Order 22 belum dibayar tapi diproses!
+[Kitchen 1] Masak order 22
+[Kitchen 2] Order 16 selesai - Stock: 81
+[Kitchen 2] WARNING: Order 23 belum dibayar tapi diproses!
+[Kitchen 2] Masak order 23
+[Kitchen 5] Order 18 selesai - Stock: 80
+[Kitchen 5] WARNING: Order 24 belum dibayar tapi diproses!
+[Kitchen 5] Masak order 24
+[Payment] Order 21 dibayar (Rp 35807) - Total Revenue: Rp 843695
+[Print] Cetak struk untuk order yang selesai... (total=20)
+[Payment] Order 22 dibayar (Rp 32899) - Total Revenue: Rp 876594
+[Payment] Order 23 dibayar (Rp 47618) - Total Revenue: Rp 924212
+[Payment] Order 24 dibayar (Rp 47014) - Total Revenue: Rp 971226
+[Kitchen 4] Order 21 selesai - Stock: 79
+[Kitchen 4] WARNING: Order 25 belum dibayar tapi diproses!
+[Kitchen 4] Masak order 25
+[Payment] Order 25 dibayar (Rp 28212) - Total Revenue: Rp 999438
+[Kitchen 3] Order 20 selesai - Stock: 78
+[Kitchen 3] WARNING: Order 26 belum dibayar tapi diproses!
+[Kitchen 3] Masak order 26
+[Kitchen 1] Order 22 selesai - Stock: 77
+[Kitchen 1] WARNING: Order 27 belum dibayar tapi diproses!
+[Kitchen 1] Masak order 27
+[Payment] Order 26 dibayar (Rp 39398) - Total Revenue: Rp 1038836
+[Payment] Order 27 dibayar (Rp 40276) - Total Revenue: Rp 1079112
+[Payment] Order 28 dibayar (Rp 37411) - Total Revenue: Rp 1116523
+[Kitchen 5] Order 24 selesai - Stock: 76
+[Kitchen 5] Masak order 28
+[Kitchen 2] Order 23 selesai - Stock: 75
+[Kitchen 2] WARNING: Order 29 belum dibayar tapi diproses!
+[Kitchen 2] Masak order 29
+[Print] Cetak struk untuk order yang selesai... (total=25)
+[Stock Manager] Update stok... (current=75, completed=25)
+[Payment] Order 29 dibayar (Rp 45664) - Total Revenue: Rp 1162187
+[Payment Thread] Completed
+[Kitchen 1] Order 27 selesai - Stock: 74
+[Kitchen 4] Order 25 selesai - Stock: 73
+[Kitchen 5] Order 28 selesai - Stock: 72
+[Kitchen 2] Order 29 selesai - Stock: 71
+[Kitchen 3] Order 26 selesai - Stock: 70
+[Kitchen 3] Completed
+[Kitchen 5] Completed
+[Kitchen 1] Completed
+[Kitchen 4] Completed
+[Kitchen 2] Completed
+[Print] Cetak struk untuk order yang selesai... (total=30)
+[Print Thread] Completed
+[Stock Manager] Update stok... (current=70, completed=30)
+[Stock Manager] Completed
+
+========================================
+         FINAL STATISTICS
+========================================
+Total Orders Processed: 30
+Expected Orders: 30
+Total Revenue: Rp 1162187
+Final Stock: 70
+Expected Stock: 70
+========================================
+
+--- RACE CONDITION ANALYSIS ---
+⚠️  Order count correct, but may have race conditions
+
+💡 KESIMPULAN:
+   Tanpa synchronization (mutex/semaphore),
+   multiple threads mengakses shared variables
+   secara bersamaan, menyebabkan:
+   - Lost updates
+   - Data inconsistency
+   - Incorrect calculations
+

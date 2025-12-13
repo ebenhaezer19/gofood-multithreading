@@ -1,0 +1,120 @@
+[OrderReceiver] Order 0 masuk
+[OrderReceiver] Order 1 masuk
+[OrderReceiver] Order 2 masuk
+[OrderReceiver] Order 3 masuk
+[OrderReceiver] Order 4 masuk
+[OrderReceiver] Order 5 masuk
+[OrderReceiver] Order 6 masuk
+[OrderReceiver] Order 7 masuk
+[OrderReceiver] Order 8 masuk
+[OrderReceiver] Order 9 masuk
+[OrderReceiver] Order 10 masuk
+[OrderReceiver] Order 11 masuk
+[OrderReceiver] Order 12 masuk
+[OrderReceiver] Order 13 masuk
+[OrderReceiver] Order 14 masuk
+[OrderReceiver] Order 15 masuk
+[OrderReceiver] Order 16 masuk
+[OrderReceiver] Order 17 masuk
+[OrderReceiver] Order 18 masuk
+[OrderReceiver] Order 19 masuk
+[OrderReceiver] Order 20 masuk
+[OrderReceiver] Order 21 masuk
+[OrderReceiver] Order 22 masuk
+[OrderReceiver] Order 23 masuk
+[OrderReceiver] Order 24 masuk
+[OrderReceiver] Order 25 masuk
+[OrderReceiver] Order 26 masuk
+[OrderReceiver] Order 27 masuk
+[OrderReceiver] Order 28 masuk
+[OrderReceiver] Order 29 masuk
+[Payment] Order 0 dibayar
+[Kitchen] Masak order 0
+[Payment] Order 1 dibayar
+[Kitchen] Masak order 1
+[Payment] Order 2 dibayar
+[Kitchen] Masak order 2
+[Payment] Order 3 dibayar
+[Kitchen] Masak order 3
+[Payment] Order 4 dibayar
+[Kitchen] Masak order 4
+[Payment] Order 5 dibayar
+[Payment] Order 6 dibayar
+[Payment] Order 7 dibayar
+[Payment] Order 8 dibayar
+[Payment] Order 9 dibayar
+[Payment] Order 10 dibayar
+[Payment] Order 11 dibayar
+[Payment] Order 12 dibayar
+[Payment] Order 13 dibayar
+[Payment] Order 14 dibayar
+[Payment] Order 15 dibayar
+[Payment] Order 16 dibayar
+[Payment] Order 17 dibayar
+[Payment] Order 18 dibayar
+[Payment] Order 19 dibayar
+[Payment] Order 20 dibayar
+[Payment] Order 21 dibayar
+[Payment] Order 22 dibayar
+[Payment] Order 23 dibayar
+[Payment] Order 24 dibayar
+[Payment] Order 25 dibayar
+[Payment] Order 26 dibayar
+[Payment] Order 27 dibayar
+[Payment] Order 28 dibayar
+[Payment] Order 29 dibayar
+[Kitchen] Masak order 5
+[Stock] Update stok... (current=99)
+[Kitchen] Masak order 6
+[Print] Cetak struk...
+[Kitchen] Masak order 7
+[Stock] Update stok... (current=96)
+[Kitchen] Masak order 8
+[Print] Cetak struk...
+[Kitchen] Masak order 9
+[Stock] Update stok... (current=95)
+[Kitchen] Masak order 10
+[Print] Cetak struk...
+[Kitchen] Masak order 11
+[Stock] Update stok... (current=93)
+[Kitchen] Masak order 12
+[Print] Cetak struk...
+[Kitchen] Masak order 13
+[Stock] Update stok... (current=90)
+[Print] Cetak struk...
+[Kitchen] Masak order 14
+[Kitchen] Masak order 15
+[Stock] Update stok... (current=89)
+[Kitchen] Masak order 16
+[Print] Cetak struk...
+[Kitchen] Masak order 17
+[Stock] Update stok... (current=87)
+[Kitchen] Masak order 18
+[Print] Cetak struk...
+[Kitchen] Masak order 19
+[Stock] Update stok... (current=85)
+[Kitchen] Masak order 20
+[Print] Cetak struk...
+[Kitchen] Masak order 21
+[Stock] Update stok... (current=83)
+[Kitchen] Masak order 22
+[Print] Cetak struk...
+[Stock] Update stok... (current=81)
+[Kitchen] Masak order 23
+[Kitchen] Masak order 24
+[Print] Cetak struk...
+[Kitchen] Masak order 25
+[Stock] Update stok... (current=79)
+[Kitchen] Masak order 26
+[Print] Cetak struk...
+[Kitchen] Masak order 27
+[Stock] Update stok... (current=77)
+[Kitchen] Masak order 28
+[Print] Cetak struk...
+[Kitchen] Masak order 29
+[Stock] Update stok... (current=75)
+[Print] Cetak struk...
+[Stock] Update stok... (current=73)
+[Print] Cetak struk...
+[Stock] Update stok... (current=71)
+[Print] Cetak struk...
