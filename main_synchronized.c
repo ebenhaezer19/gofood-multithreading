@@ -70,8 +70,6 @@ void* kitchen_thread(void* arg) {
         pthread_mutex_lock(&mutex_payment);
         while (payment_status[orderID] == 0)
             pthread_cond_wait(&cond_payment, &mutex_payment);
-        pthread_mutex_unlock(&mutex_payment);
-
         printf("[Kitchen] Masak order %d\n", orderID);
         sleep(1);
 
@@ -81,10 +79,8 @@ void* kitchen_thread(void* arg) {
         pthread_mutex_unlock(&mutex_stock);
 
         // SIGNAL order selesai
-        pthread_cond_signal(&cond_done);
-
-        pthread_mutex_lock(&mutex_payment);
         completed++;
+        pthread_cond_broadcast(&cond_done); // bangunkan stock & print
         pthread_mutex_unlock(&mutex_payment);
 
         if (completed >= TOTAL_ORDER) break;
@@ -96,24 +92,60 @@ void* kitchen_thread(void* arg) {
 // THREAD: Update Stock
 // ------------------------------
 void* stock_thread(void* arg) {
+    int last_completed = 0;
+
+    pthread_mutex_lock(&mutex_payment);
     while (1) {
-        pthread_cond_wait(&cond_done, &mutex_payment);
-        printf("[Stock] Update stok... (current=%d)\n", stock);
-        if (completed >= TOTAL_ORDER) break;
+        // Tunggu sampai ada order baru yang selesai
+        while (completed == last_completed) {
+            if (completed >= TOTAL_ORDER) {
+                pthread_mutex_unlock(&mutex_payment);
+                return NULL;
+            }
+            pthread_cond_wait(&cond_done, &mutex_payment);
+        }
+
+        // Ada order baru yang selesai
+        int current_stock;
+        pthread_mutex_lock(&mutex_stock);
+        current_stock = stock;
+        pthread_mutex_unlock(&mutex_stock);
+
+        printf("[Stock] Update stok... (current=%d, completed=%d)\n", current_stock, completed);
+        last_completed = completed;
+
+        if (completed >= TOTAL_ORDER) {
+            pthread_mutex_unlock(&mutex_payment);
+            return NULL;
+        }
     }
-    return NULL;
 }
 
 // ------------------------------
 // THREAD: Print Struk
 // ------------------------------
 void* print_thread(void* arg) {
+    int last_completed = 0;
+
+    pthread_mutex_lock(&mutex_payment);
     while (1) {
-        pthread_cond_wait(&cond_done, &mutex_payment);
-        printf("[Print] Cetak struk...\n");
-        if (completed >= TOTAL_ORDER) break;
+        // Tunggu sampai ada order baru yang selesai
+        while (completed == last_completed) {
+            if (completed >= TOTAL_ORDER) {
+                pthread_mutex_unlock(&mutex_payment);
+                return NULL;
+            }
+            pthread_cond_wait(&cond_done, &mutex_payment);
+        }
+
+        printf("[Print] Cetak struk... (total selesai=%d)\n", completed);
+        last_completed = completed;
+
+        if (completed >= TOTAL_ORDER) {
+            pthread_mutex_unlock(&mutex_payment);
+            return NULL;
+        }
     }
-    return NULL;
 }
 
 // ------------------------------
@@ -126,6 +158,11 @@ int main() {
 
     pthread_cond_init(&cond_payment, NULL);
     pthread_cond_init(&cond_done, NULL);
+
+    // Inisialisasi status payment
+    for (int i = 0; i < TOTAL_ORDER; i++) {
+        payment_status[i] = 0;
+    }
 
     // Generate 30 orders
     for (int i = 0; i < TOTAL_ORDER; i++) {
