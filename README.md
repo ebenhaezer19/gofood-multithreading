@@ -1,8 +1,8 @@
-# Go-Food Multithreading System
+# FoodGo Multithreading System
 ## Operating Systems Final Project - Semester Ganjil 2025/2026
 
 ### 📋 Deskripsi Proyek
-Sistem multithreading untuk simulasi pemrosesan order Go-Food yang mendemonstrasikan konsep-konsep Operating Systems seperti race condition, synchronization, memory mapping, dan CPU scheduling.
+Sistem multithreading untuk simulasi pemrosesan order FoodGo yang mendemonstrasikan konsep-konsep Operating Systems seperti race condition, synchronization, memory mapping, dan CPU scheduling.
 
 ---
 
@@ -22,7 +22,7 @@ Sistem multithreading untuk simulasi pemrosesan order Go-Food yang mendemonstras
 ## 🎯 Latar Belakang Masalah
 
 ### Permasalahan Real
-Dalam sistem Go-Food, terdapat beberapa tantangan operasional:
+Dalam sistem FoodGo, terdapat beberapa tantangan operasional:
 1. **Volume Order Tinggi**: Ribuan order masuk secara bersamaan dari berbagai customer
 2. **Proses Sequential**: Order harus melalui tahapan: Penerimaan → Payment → Kitchen → Stock Update
 3. **Shared Resources**: Multiple threads mengakses data yang sama (order list, stock inventory, revenue)
@@ -120,8 +120,8 @@ make --version
 ### Build Project
 ```bash
 # Clone repository
-git clone https://github.com/ebenhaezer19/gofood-multithreading.git
-cd gofood-multithreading
+git clone https://github.com/ebenhaezer19/foodgo-multithreading.git
+cd foodgo-multithreading
 
 # Build both versions
 make
@@ -131,8 +131,8 @@ Output:
 ```
 ==========================================
 Build successful!
-  - gofood_race (Race Condition Demo)
-  - gofood_sync (Synchronized Version)
+  - foodgo_race (Race Condition Demo)
+  - foodgo_sync (Synchronized Version)
 ==========================================
 ```
 
@@ -142,7 +142,7 @@ Build successful!
 ```bash
 make run-race
 # atau
-./gofood_race
+./foodgo_race
 ```
 
 **Expected Output:**
@@ -155,7 +155,7 @@ make run-race
 ```bash
 make run-sync
 # atau
-./gofood_sync
+./foodgo_sync
 ```
 
 **Expected Output:**

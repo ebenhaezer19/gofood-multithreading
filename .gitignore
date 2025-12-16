@@ -3,9 +3,9 @@
 *.obj
 
 # Executables
-gofood_system
-gofood_race
-gofood_sync
+foodgo_system
+foodgo_race
+foodgo_sync
 *.exe
 *.out
 a.out

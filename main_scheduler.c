@@ -117,7 +117,7 @@ int main() {
     }
 
     printf("========================================\n");
-    printf("Simulasi CPU Scheduler untuk %d task (GoFood orders)\n", NUM_TASK);
+    printf("Simulasi CPU Scheduler untuk %d task (FoodGo orders)\n", NUM_TASK);
     printf("========================================\n");
 
     // Test FCFS

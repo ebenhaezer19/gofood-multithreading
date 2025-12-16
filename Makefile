@@ -1,12 +1,12 @@
-# Makefile for Go-Food Multithreading System
+# Makefile for FoodGo Multithreading System
 # Operating Systems Final Project
 
 CC = gcc
 CFLAGS = -Wall -Wextra -pthread -g
 
 # Executables
-RACE = gofood_race
-SYNC = gofood_sync
+RACE = foodgo_race
+SYNC = foodgo_sync
 
 # Source files
 SRC_RACE = main_race_condition.c
@@ -64,7 +64,7 @@ clean:
 
 # Help target
 help:
-	@echo "Go-Food Multithreading System - Makefile"
+	@echo "FoodGo Multithreading System - Makefile"
 	@echo ""
 	@echo "Available targets:"
 	@echo "  make          - Build both versions"
@@ -75,7 +75,7 @@ help:
 	@echo "  make help     - Show this help message"
 	@echo ""
 	@echo "Executables:"
-	@echo "  ./gofood_race - Race condition demo"
-	@echo "  ./gofood_sync - Synchronized version"
+	@echo "  ./foodgo_race - Race condition demo"
+	@echo "  ./foodgo_sync - Synchronized version"
 
 .PHONY: all clean run-race run-sync run-both help
