@@ -123,18 +123,19 @@ int main() {
     // Test FCFS
     simulate_fcfs(base, NUM_TASK);
 
-    // Test Round Robin dengan quantum 2
+    // Test Round Robin dengan berbagai quantum
     simulate_rr(base, NUM_TASK, 2);
-
-    // Test Round Robin dengan quantum 4
+    simulate_rr(base, NUM_TASK, 3);
     simulate_rr(base, NUM_TASK, 4);
+    simulate_rr(base, NUM_TASK, 5);
 
     printf("========================================\n");
     printf("KESIMPULAN:\n");
-    printf("- FCFS: Simple tapi waiting time tinggi\n");
-    printf("- Round Robin: Lebih fair, response time lebih baik\n");
-    printf("- Quantum kecil: Overhead tinggi, tapi responsive\n");
-    printf("- Quantum besar: Mendekati FCFS\n");
+    printf("- FCFS: Paling efisien (waiting time terendah)\n");
+    printf("- Round Robin: Trade-off fairness vs efficiency\n");
+    printf("- Quantum kecil (q=2): Overhead tinggi, sangat responsive\n");
+    printf("- Quantum medium (q=3-4): Balance optimal\n");
+    printf("- Quantum besar (q=5+): Mendekati FCFS, efisien\n");
     printf("========================================\n");
 
     return 0;
