@@ -51,14 +51,17 @@ void simulate_fcfs(Task src[], int n) {
 // Round Robin: time-sharing dengan quantum (mirip 5 chef paralel)
 void simulate_rr(Task src[], int n, int quantum) {
     Task tasks[NUM_TASK];
+    int remaining[NUM_TASK];
+    int completion_time[NUM_TASK] = {0};
+    
     for (int i = 0; i < n; i++) {
         tasks[i] = src[i];
-        tasks[i].remaining = src[i].burst;
+        remaining[i] = src[i].burst;
     }
 
     int time = 0;
     int completed = 0;
-    int queue[NUM_TASK];
+    int queue[NUM_TASK * 10]; // Larger queue to handle multiple rounds
     int front = 0, rear = 0;
 
     // Masukkan semua task ke queue
@@ -69,22 +72,21 @@ void simulate_rr(Task src[], int n, int quantum) {
     printf("Gantt Chart RR (quantum=%d): ", quantum);
     
     while (completed < n) {
-        if (front == rear) break;
+        if (front >= rear) break;
         
         int idx = queue[front++];
 
-        if (tasks[idx].remaining > 0) {
-            int exec_time = (tasks[idx].remaining > quantum) ? quantum : tasks[idx].remaining;
+        if (remaining[idx] > 0) {
+            int exec_time = (remaining[idx] > quantum) ? quantum : remaining[idx];
             
             printf("| T%d(%d) ", tasks[idx].id, exec_time);
             
             time += exec_time;
-            tasks[idx].remaining -= exec_time;
+            remaining[idx] -= exec_time;
 
-            if (tasks[idx].remaining == 0) {
+            if (remaining[idx] == 0) {
                 completed++;
-                tasks[idx].turnaround = time;
-                tasks[idx].waiting = tasks[idx].turnaround - tasks[idx].burst;
+                completion_time[idx] = time;
             } else {
                 // Masukkan kembali ke queue
                 queue[rear++] = idx;
@@ -92,6 +94,12 @@ void simulate_rr(Task src[], int n, int quantum) {
         }
     }
     printf("|\n");
+
+    // Calculate waiting and turnaround times
+    for (int i = 0; i < n; i++) {
+        tasks[i].turnaround = completion_time[i];
+        tasks[i].waiting = tasks[i].turnaround - tasks[i].burst;
+    }
 
     print_result("Round Robin", tasks, n, time);
 }
