@@ -177,7 +177,7 @@ int main() {
     printf("⚠️  Race condition AKAN terjadi!\n");
     printf("⚠️  Data mungkin TIDAK konsisten!\n\n");
     
-    srand(time(NULL));
+    srand(42);  // Fixed seed untuk perbandingan dengan synchronized version
     
     // Initialize payment status
     for (int i = 0; i < TOTAL_ORDER; i++) {

@@ -171,6 +171,8 @@ void* print_thread(void* arg) {
 // MAIN — INIT + CREATE THREAD
 // ------------------------------
 int main() {
+    srand(42);  // Fixed seed untuk perbandingan dengan race condition version
+    
     pthread_mutex_init(&mutex_queue, NULL);
     pthread_mutex_init(&mutex_stock, NULL);
     pthread_mutex_init(&mutex_payment, NULL);
